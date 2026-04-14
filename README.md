@@ -1,5 +1,13 @@
 # commit-skill
 
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-Skill-D97757?logo=anthropic&logoColor=white)](https://docs.claude.com/claude-code)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/apte4ka112/commit-skill?style=social)](https://github.com/apte4ka112/commit-skill/stargazers)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/apte4ka112/commit-skill/pulls)
+
+> Stop writing commit messages and opening PRs by hand. Let Claude do it — in your repo's style, on a feature branch, with a proper PR.
+
 A [Claude Code](https://docs.claude.com/claude-code) skill that takes your working changes, creates a conventional commit on a feature branch, pushes to `origin`, and opens (or updates) a pull request against your repository's base branch.
 
 ## What it does
