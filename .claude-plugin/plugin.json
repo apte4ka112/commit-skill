@@ -1,0 +1,11 @@
+{
+  "name": "commit-skill",
+  "version": "1.0.0",
+  "description": "Commit changes, push to a feature branch, and open or update a pull request — conventional commits, auto-detected base branch.",
+  "author": {
+    "name": "Alexey Krainov",
+    "url": "https://github.com/apte4ka112"
+  },
+  "homepage": "https://github.com/apte4ka112/commit-skill",
+  "license": "MIT"
+}
