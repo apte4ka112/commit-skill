@@ -4,45 +4,37 @@
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-FE5196?logo=conventionalcommits&logoColor=white)](https://www.conventionalcommits.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/apte4ka112/commit-skill?style=social)](https://github.com/apte4ka112/commit-skill/stargazers)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/apte4ka112/commit-skill/pulls)
 
-> Stop writing commit messages and opening PRs by hand. Let Claude do it — in your repo's style, on a feature branch, with a proper PR.
+> You make changes. You type `/commit`. Everything else is automatic.
 
-A [Claude Code](https://docs.claude.com/claude-code) skill that takes your working changes, creates a conventional commit on a feature branch, pushes to `origin`, and opens (or updates) a pull request against your repository's base branch.
+A [Claude Code](https://docs.claude.com/claude-code) skill that commits your changes, creates a feature branch if needed, and opens a pull request. No commit message, no thinking.
 
-## What it does
+## Features
 
-When invoked, the skill:
+- **Understands from context.** Reads the diff and picks the right conventional commit prefix. You don't describe anything.
+- **Splits unrelated changes.** Refactor + fix + test in one edit? You get separate commits with correct prefixes.
+- **Works from any branch.** Editing on `main`? It auto-creates a feature branch, moves your changes onto it, and opens the PR against the right base.
 
-1. Analyzes the working tree (`git status` / `git diff`).
-2. Detects the base branch automatically (`git symbolic-ref refs/remotes/origin/HEAD`) — or takes it from `--base <branch>`.
-3. Picks a conventional-commit prefix (`feat`, `fix`, `refactor`, …) based on the diff and the provided context.
-4. If the current branch is the base branch, creates a new feature branch named `{prefix}/{short-kebab-description}`.
-5. Stages only the files relevant to the task (never `git add .`).
-6. Commits with a conventional-commit message — no `Co-Authored-By`, no AI mentions.
-7. Pushes the branch to `origin`.
-8. Opens a new PR against the base branch — or appends new bullets to an existing PR for that branch.
+## Usage
 
-## Requirements
+After making changes:
 
-- [Claude Code](https://docs.claude.com/claude-code)
-- `git` and [`gh`](https://cli.github.com/) available on your `PATH`
-- `gh auth login` completed
+> /commit
 
-## Installation
+That's it. Optionally add context or override the base branch:
 
-### Option 1 — Install as a plugin (recommended)
+> /commit fixing the catalog breadcrumb --base develop
 
-From inside Claude Code:
+## Install
+
+### Plugin (recommended)
 
 ```
 /plugin marketplace add apte4ka112/commit-skill
 /plugin install commit-skill
 ```
 
-Invoke the skill with `/commit-skill:commit`.
-
-### Option 2 — Install as a personal skill (copy-paste)
+### Copy-paste
 
 ```bash
 mkdir -p ~/.claude/skills/commit
@@ -50,30 +42,10 @@ curl -fsSL https://raw.githubusercontent.com/apte4ka112/commit-skill/main/skills
   -o ~/.claude/skills/commit/SKILL.md
 ```
 
-Invoke with `/commit` after restarting Claude Code.
+## Requirements
 
-### Option 3 — Project-level install
-
-Copy `skills/commit/SKILL.md` into your project's `.claude/skills/commit/SKILL.md` and commit it. The skill will be available only in that project.
-
-## Usage
-
-After you've made changes in a repo, ask Claude:
-
-> /commit fix for broken breadcrumb on invalid catalog pages
-
-Or override the base branch:
-
-> /commit feature flag rollout --base develop
-
-The skill will:
-
-- pick the right prefix (`fix`, `feat`, …),
-- create a feature branch if needed,
-- commit only the relevant files,
-- push,
-- and open (or update) a PR against the detected base branch.
+[Claude Code](https://docs.claude.com/claude-code), `git`, and [`gh`](https://cli.github.com/) authenticated.
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).
